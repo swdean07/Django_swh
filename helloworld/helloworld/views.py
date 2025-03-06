@@ -14,13 +14,13 @@ def introduce(request):
     return HttpResponse("hello. this is swh.")
 
 def sports(request):
-    return render(request, "sports.html")
+    return render(request, "spo.html")
 
 def music(request):
-    return render(request, "music.html")
+    return render(request, "muse.html")
 
 def animal(request):
-    return render(request, "animal.html")
+    return render(request, "ani.html")
 
 def weather(request):
-    return render(request, "weather.html")
+    return render(request, "wea.html")

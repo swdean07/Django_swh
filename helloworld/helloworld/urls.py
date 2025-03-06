@@ -24,8 +24,8 @@ urlpatterns = [
     path("", main),
     path("lunch_list/", lunch_list),
     path("introduce/", introduce),
-    path("sports/", sports),
-    path("music/", music),
-    path("animal/", animal),
-    path("weather/", weather)
+    path("spo/", sports),
+    path("muse/", music),
+    path("ani/", animal),
+    path("wea/", weather)
 ]
