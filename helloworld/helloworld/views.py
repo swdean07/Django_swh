@@ -18,7 +18,7 @@ def sports(request):
     return render(request, "spo.html")
 
 def music(request):
-    # return HttpResponse("음악 장르는 다양하다")
+    # return HttpResponse("본인이 선호하는 음악 장르는 무엇인가요?")
     return render(request, "muse.html")
 
 def animal(request):
