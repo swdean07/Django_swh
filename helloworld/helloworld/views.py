@@ -14,13 +14,17 @@ def introduce(request):
     return HttpResponse("hello. this is swh.")
 
 def sports(request):
+    # return HttpResponse("제가 좋아하는 스포츠는 축구")
     return render(request, "spo.html")
 
 def music(request):
+    # return HttpResponse("음악 장르는 다양하다")
     return render(request, "muse.html")
 
 def animal(request):
+    # return HttpResponse("개, 고양이, 판다")
     return render(request, "ani.html")
 
 def weather(request):
+    # return HttpResponse("오늘의 날씨는 흐림입니다.")
     return render(request, "wea.html")
