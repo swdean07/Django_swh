@@ -42,7 +42,7 @@ def burger_list(request):
 
 def cafe_list(request):
     coffees = Coffee.objects.all()
-    print("카페 전체 리스트 목록: ", coffees)
+    print("커피 전체 리스트 목록: ", coffees)
     context = {
         "coffees": coffees
     }
