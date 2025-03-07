@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from burgers.models import Burger
+from coffee.models import Coffee
+
 
 def main(request):
     return render(request, "main.html")
@@ -28,3 +31,19 @@ def animal(request):
 def weather(request):
     # return HttpResponse("오늘의 날씨는 흐림입니다.")
     return render(request, "wea.html")
+
+def burger_list(request):
+    burgers = Burger.objects.all()
+    print("햄버거 전체 목록: ", burgers)
+    context = {
+        "burgers": burgers
+    }
+    return render(request, "burger_list.html", context)
+
+def coffee_list(request):
+    coffees = Coffee.objects.all()
+    print("커피 전체 리스트 목록: ", coffees)
+    context = {
+        "coffees": coffees
+    }
+    return render(request, "coffee_list.html", context)
