@@ -18,7 +18,7 @@ from django.contrib import admin
 # from django.contrib import admin
 from django.urls import path
 
-from helloworld.views import main, lunch_list, introduce, sports, music, animal, weather, burger_list, coffee_list
+from helloworld.views import main, lunch_list, introduce, sports, music, animal, weather, burger_list, cafe_list
 
 urlpatterns = [
        path('admin/', admin.site.urls),
@@ -30,5 +30,6 @@ urlpatterns = [
     path("ani/", animal),
     path("wea/", weather),
     path("list/", burger_list),
-    path("cafe/", coffee_list)
+    path("cafe/", cafe_list)
+
 ]

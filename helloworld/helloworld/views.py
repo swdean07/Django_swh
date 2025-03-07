@@ -40,10 +40,10 @@ def burger_list(request):
     }
     return render(request, "burger_list.html", context)
 
-def coffee_list(request):
+def cafe_list(request):
     coffees = Coffee.objects.all()
-    print("커피 전체 리스트 목록: ", coffees)
+    print("카페 전체 리스트 목록: ", coffees)
     context = {
         "coffees": coffees
     }
-    return render(request, "coffee_list.html", context)
+    return render(request, "cafe_list.html", context)
