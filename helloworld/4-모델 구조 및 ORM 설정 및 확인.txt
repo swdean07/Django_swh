@@ -1,0 +1,115 @@
+파이버거, 새 앱 추가. -> 도메인 을 추가.
+예) 회원, 게시판, 댓글, 주문, ...
+
+1 새 application 생성.
+python manage.py startapp burgers
+
+2 새 application 장고에 등록.
+프로젝이름/settings.py
+
+등록 예시, 33번째 줄.
+
+INSTALLED_APPS = [
+    'burgers',
+
+
+3
+Model 클래스 만들기.
+속성,
+이름, 가격, 칼로리
+
+위치: 앱 이름 : burgers/models.py
+
+from django.db import models
+
+class Burger(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.IntegerField(default=0)
+    calories = models.IntegerField(default=0)
+
+
+모델 생성 후, 또는 변경이 발생시, 아래의
+마이그레이션 작업을 해야한다.
+
+데이터베이스 마이그레이션 작업 ,
+
+순서
+1 -> 장고의 기본 테이블을 생성.
+python manage.py migrate
+=======================================
+파이참 오른쪽 메뉴  -> 데이터 소스 부분에서, ->
+추가 -> SQLite 선택 -> 파일 기반이라서,
+=> 프로젝트 내부에, db.sqlite3 파일 선택하면됨.
+드라이버는 최초 설정시 설정이 안되어 있으니, 다운로드 받으면,
+자동 연결 하고, 테스트 하면 됩니다.
+==============================================
+
+앱을 추가 할 때 마다, 또는 변경시 마다 실행을 한다.
+2
+python manage.py makemigrations burgers
+
+3
+python manage.py migrate burgers
+
+
+장고의 좋은 기능인, 관리자 기능 확인 해보기.
+
+주의)
+프로젝트 생성시, 관리자 체크를 하면, 바로 사용하면됨.
+만약, 체크를 못했다면,
+따로 , 설정.
+
+설정
+1
+프로젝이름/settings.py
+'django.contrib.admin' 추가
+INSTALLED_APPS = [
+    'burgers',
+    'django.contrib.admin',
+
+2
+라우팅 확인.
+프로젝이름/urls.py
+from django.contrib import admin
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+
+
+순서
+1.
+burgers/admin.py
+
+# Register your models here.
+@admin.register(Burger)
+class BurgerAdmin(admin.ModelAdmin):
+    pass
+
+2
+관리자 계정 만들기.
+python manage.py createsuperuser
+
+3.
+http://localhost:8000/admin
+최초 접속시 , 만약 , 경고 발생하면,
+python manage.py migrate
+후에 다시 접속하기.
+
+==========================================
+관리자 페이지에서, 버거 등록 해보기.
+gui 데이터 입력 후, 저장 버튼 클릭.
+
+리스트에 , 해당 버거의 속성 이름으로 표시 해보기.
+
+burgers/models.py 에서, 추가하기.
+def __str__(self):
+        return self.name
+
+class Burger(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.IntegerField(default=0)
+    calories = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
