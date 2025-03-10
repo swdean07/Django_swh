@@ -40,6 +40,22 @@ def burger_list(request):
     }
     return render(request, "burger_list.html", context)
 
+def burger_search(request):
+    # print(request.GET)
+    keyword = request.GET.get("keyword")
+    print(keyword)
+
+    if keyword is not None:
+        burgers = Burger.objects.filter(name__contains=keyword)
+    else:
+        burgers = Burger.objects.none()
+
+    context = {
+        "burgers": burgers
+    }
+    print("조회된 내용: ", burgers)
+    return render(request, "burger_search.html", context)
+
 def cafe_list(request):
     coffees = Coffee.objects.all()
     print("커피 전체 리스트 목록: ", coffees)
@@ -47,3 +63,18 @@ def cafe_list(request):
         "coffees": coffees
     }
     return render(request, "cafe_list.html", context)
+
+def cafe_search(request):
+    keyword = request.GET.get("keyword")
+    print(keyword)
+
+    if keyword is not None:
+        coffees = Coffee.objects.filter(name__contains=keyword)
+    else:
+        coffees = Coffee.objects.none()
+
+    context = {
+        "coffees": coffees
+    }
+    print("조회된 내용: ", coffees)
+    return render(request, "cafe_search.html", context)
