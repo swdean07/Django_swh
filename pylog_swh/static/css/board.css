@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
 
 /* 기본 스타일 유지 */
 ul, ol {
@@ -61,7 +61,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* 버튼 개선 */
+/* 버튼 스타일 */
 .btn {
   width: 70px;
   height: 32px;
@@ -77,17 +77,7 @@ body {
 
 .btn:hover {
   background-color: #f1f1f1;
-}
-
-/* 주요 버튼 스타일 */
-.btn-primary {
-  border: 1px solid #00c3bd;
-  color: #00c3bd;
-}
-
-.btn-primary:hover {
-  color: white;
-  background-color: #00c3bd;
+  transform: scale(1.05);
 }
 
 /* 게시판 목록 */
@@ -115,10 +105,6 @@ ul.board > li.board {
   transition: all 0.3s ease-in-out;
 }
 
-ul.board > li.board:not(:last-child) {
-  margin-bottom: 12px;
-}
-
 ul.board > li.board:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -142,7 +128,6 @@ ul.board > li.board p {
   line-height: 1.6;
 }
 
-/* 이미지 스타일 */
 ul.board > li.board img {
   position: absolute;
   top: 20px;
@@ -178,18 +163,14 @@ ul.reply > li.reply-empty {
 }
 
 /* 반응형 디자인 */
-@media only screen and (hover: none) and (pointer: coarse) {
+@media only screen and (max-width: 768px) {
   html {
-    font-size: 4vw;
+    font-size: 16px;
   }
 
   #navbar {
-    height: 14vw;
-  }
-
-  ul.board {
-    margin: 0 5vw;
-    padding: 0;
+    height: 50px;
+    font-size: 1.1rem;
   }
 
   ul.board > li.board {
@@ -202,17 +183,17 @@ ul.reply > li.reply-empty {
 
   ul.board > li.board p {
     font-size: 0.9rem;
-    padding-right: 22vw;
-  }
-
-  ul.board > li.board img {
-    width: 20vw;
-    height: 20vw;
-    top: 16vw;
-    right: 0;
-  }
-
-  ul.reply {
-    font-size: 0.8rem;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  ul.board > li.board img {
+    width: 80px;
+    height: 80px;
+  }
+
+  ul.board > li.board h2 {
+    font-size: 1rem;
+  }
+}
+
