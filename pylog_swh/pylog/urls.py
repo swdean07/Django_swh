@@ -17,9 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from blog.views import post_list
+from board.views import board_list
 from pylog.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index)
+    path('', index),
+    path('posts/', post_list),
+    path('board/', board_list)
 ]

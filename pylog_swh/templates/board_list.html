@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Board List</title>
+     <link rel="stylesheet" href="{% static 'css/board.css' %}">
+</head>
+<body>
+<div id ="navbar">
+    <h1>Board List</h1>
+</div>
+<div id="board-list">
+    <ul class="board">
+        {% for board in board %}
+            <li class="board">
+                <div>{{board.title}}</div>
+                <p>{{board.content}}</p>
+<!--                추가-->
+                <ul class="reply">
+                    {% for reply in board.reply_set.all %}
+                        <li class="reply">{{reply.content}}</li>
+                    {% empty %}
+                        <li class="reply-empty">아직 댓글이 없음</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+</body>
+</html>
