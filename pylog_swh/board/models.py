@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Board(models.Model):
     title = models.CharField("게시판 제목", max_length=100)
-    content = models.TextField("게시판 제목")
+    content = models.TextField("게시판 내용")
 
     def __str__(self):
         return self.title
